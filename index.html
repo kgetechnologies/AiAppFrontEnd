@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jotform AI Agent Builder</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="header-left">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <span class="logo-text">Jotform</span>
+                </div>
+                <div class="breadcrumb">
+                    <span>AI Agent Builder</span>
+                    <span>→</span>
+                </div>
+            </div>
+            
+            <div class="header-center">
+                <h1 class="agent-name">Maya: Customer Support Specialist</h1>
+            </div>
+
+            <div class="header-right">
+                <span>Features</span>
+                <span>Support</span>
+                <button class="settings-btn">
+                    ⚙️ Settings
+                </button>
+                <div class="user-avatar">S</div>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs">
+            <div class="nav-content">
+                <div class="tabs">
+                    <span class="tab" data-tab="build">BUILD</span>
+                    <span class="tab active" data-tab="train">TRAIN</span>
+                    <span class="tab" data-tab="publish">PUBLISH</span>
+                </div>
+                <div class="preview-toggle">
+                    <span>Preview</span>
+                    <div class="toggle" id="preview-toggle">
+                        <div class="toggle-slider"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-layout">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-item active" data-section="persona">
+                <div class="sidebar-item-content">
+                    <div class="sidebar-icon">👤</div>
+                    <div class="sidebar-text">
+                        <div class="sidebar-title">AI PERSONA</div>
+                        <div class="sidebar-subtitle">How the Agent talks and acts</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-item" data-section="knowledge">
+                <div class="sidebar-item-content">
+                    <div class="sidebar-icon">📚</div>
+                    <div class="sidebar-text">
+                        <div class="sidebar-title">KNOWLEDGE BASE</div>
+                        <div class="sidebar-subtitle">Train Agent for context aware replies</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-item" data-section="actions">
+                <div class="sidebar-item-content">
+                    <div class="sidebar-icon">⚡</div>
+                    <div class="sidebar-text">
+                        <div class="sidebar-title">ACTIONS</div>
+                        <div class="sidebar-subtitle">Set conditions for replies and tasks</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-item" data-section="tools">
+                <div class="sidebar-item-content">
+                    <div class="sidebar-icon">🔧</div>
+                    <div class="sidebar-text">
+                        <div class="sidebar-title">TOOLS</div>
+                        <div class="sidebar-subtitle">Extend your Agent's capabilities</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-item" data-section="forms">
+                <div class="sidebar-item-content">
+                    <div class="sidebar-icon">📄</div>
+                    <div class="sidebar-text">
+                        <div class="sidebar-title">FORMS</div>
+                        <div class="sidebar-subtitle">Integrate form to collect data</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-item" data-section="teach">
+                <div class="sidebar-item-content">
+                    <div class="sidebar-icon">🎓</div>
+                    <div class="sidebar-text">
+                        <div class="sidebar-title">TEACH YOUR AGENT</div>
+                        <div class="sidebar-subtitle">Train your Agent with chat</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- AI Persona Section -->
+            <div id="persona-section" class="content-section">
+                <div class="content-header">
+                    <div class="content-icon" style="background: #8b5cf6;">👤</div>
+                    <div>
+                        <h2 class="content-title">AI PERSONA</h2>
+                        <p class="content-subtitle">Write and customize how the AI talks and acts</p>
+                    </div>
+                </div>
+
+                <div class="form-card">
+                    <!-- Agent Name -->
+                    <div class="form-group">
+                        <label class="form-label">Agent Name</label>
+                        <p class="form-description">Give a name to your Agent that will be displayed in the conversation</p>
+                        <input type="text" class="form-input" id="agent-name" value="Liam" style="max-width: 400px;">
+                    </div>
+
+                    <!-- Agent Role -->
+                    <div class="form-group">
+                        <label class="form-label">Agent Role</label>
+                        <p class="form-description">Describe your Agent's job title</p>
+                        <input type="text" class="form-input" id="agent-role" value="Customer Support Specialist" style="max-width: 400px;">
+                        <div class="role-badges">
+                            <span class="role-badge" data-role="Help Desk Agent">Help Desk Agent</span>
+                            <span class="role-badge" data-role="Technical Support Representative">Technical Support Rep...</span>
+                            <span class="role-badge" data-role="Client Service Coordinator">Client Service Coordina...</span>
+                        </div>
+                    </div>
+
+                    <!-- Default Language -->
+                    <div class="form-group">
+                        <label class="form-label">Default Language</label>
+                        <p class="form-description">Select the language in which your Agents greet users</p>
+                        <select class="form-select" id="language" style="max-width: 400px;">
+                            <option value="English" selected>English</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="French">French</option>
+                            <option value="German">German</option>
+                        </select>
+                    </div>
+
+                    <!-- Tone of Voice -->
+                    <div class="form-group">
+                        <label class="form-label">Tone of Voice</label>
+                        <p class="form-description">Select how you would like the AI to communicate</p>
+                        <select class="form-select" id="tone" style="max-width: 400px;">
+                            <option value="Friendly" selected>🙂 Friendly</option>
+                            <option value="Professional">💼 Professional</option>
+                            <option value="Casual">😊 Casual</option>
+                            <option value="Formal">🎩 Formal</option>
+                        </select>
+                    </div>
+
+                    <!-- Conversation Style -->
+                    <div class="form-group">
+                        <label class="form-label">Conversation Style</label>
+                        <p class="form-description">Describe how your Agent will talk during the conversations</p>
+                        
+                        <div class="tab-container">
+                            <div class="tab-header">
+                                <button class="tab-btn active" data-tab="chat">💬 Chat</button>
+                                <button class="tab-btn" data-tab="voice">🎤 Voice</button>
+                                <button class="tab-btn" data-tab="email">📧 Email</button>
+                            </div>
+                            
+                            <div class="tab-content" id="chat-tab">
+                                <div class="form-group">
+                                    <label class="form-label">Chat Response Length</label>
+                                    <div class="slider-container">
+                                        <input type="range" class="slider" id="response-length" min="1" max="4" value="2">
+                                        <div class="slider-labels">
+                                            <span>Minimal</span>
+                                            <span>Short</span>
+                                            <span>Long</span>
+                                            <span>Chatty</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tab-content hidden" id="voice-tab">
+                                <div class="form-group">
+                                    <label class="form-label">Voice Response Length</label>
+                                    <div class="slider-container">
+                                        <input type="range" class="slider" id="voice-response-length" min="1" max="4" value="2">
+                                        <div class="slider-labels">
+                                            <span>Minimal</span>
+                                            <span>Short</span>
+                                            <span>Long</span>
+                                            <span>Chatty</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+        <label class="form-label">Email Guidelines</label>
+        <p class="form-description">Set clear rules for how your agent should respond in email channels</p>
+       
+    </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Agent Voice</label>
+                                    <div class="voice-selection">
+                                        <div class="voice-avatar">G</div>
+                                        <div class="voice-info">
+                                            <div class="voice-name">George</div>
+                                            <div class="voice-tags">
+                                                <span class="voice-tag">English</span>
+                                                <span class="voice-tag">British</span>
+                                                <span class="voice-tag">Male</span>
+                                                <span class="voice-tag">Middle-Aged</span>
+                                            </div>
+                                        </div>
+                                        <div class="voice-actions">
+                                            <button class="btn-voice">▶️</button>
+                                            <button class="btn-voice">Change</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Guidelines -->
+                    <div class="form-group">
+                        <label class="form-label">Chat Guidelines</label>
+                        <p class="form-description">Set clear rules for how your agent should respond in chat channels</p>
+                        
+                        <div id="guidelines-container">
+                            <div class="guideline-item">
+                                <textarea class="form-textarea">Your main goal is to promptly answer questions and resolve issues.</textarea>
+                                <button class="remove-btn" type="button">🗑️ </button>
+                            </div>
+                            <div class="guideline-item">
+                                <textarea class="form-textarea">Always provide clear, helpful, and concise solutions.</textarea>
+                                <button class="remove-btn" type="button">🗑️</button>
+                            </div>
+                            <div class="guideline-item">
+                                <textarea class="form-textarea">Be polite, patient, and empathetic in all interactions.</textarea>
+                                <button class="remove-btn" type="button">🗑️</button>
+                            </div>
+                            <div class="guideline-item">
+                                <textarea class="form-textarea">Ensure users feel supported and understood.</textarea>
+                                <button class="remove-btn" type="button">🗑️</button>
+                            </div>
+                            <div class="guideline-item">
+                                <textarea class="form-textarea">Keep responses professional yet friendly to build trust.</textarea>
+                                <button class="remove-btn" type="button">🗑️</button>
+                            </div>
+                        </div>
+                        
+                        <button type="button" class="btn btn-primary full-width" id="add-guideline">
+                            ➕ Add new
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Knowledge Base Section -->
+            <div id="knowledge-section" class="content-section hidden">
+                <!-- Knowledge Base Overview -->
+                <div id="knowledge-overview">
+                    <div class="content-header">
+                        <div class="content-icon" style="background: #3b82f6;">📚</div>
+                        <div>
+                            <h2 class="content-title">KNOWLEDGE BASE</h2>
+                            <p class="content-subtitle">Train your Agent for context-aware responses to ensure accurate replies</p>
+                        </div>
+                    </div>
+
+                    <div class="knowledge-grid">
+                        <div class="knowledge-card" data-type="knowledge">
+                            <div class="knowledge-card-content">
+                                <div class="knowledge-card-left">
+                                    <div class="knowledge-card-icon" style="background: #10b981;">➕</div>
+                                    <div class="knowledge-card-text">
+                                        <h3>KNOWLEDGE</h3>
+                                        <p>Add text-based information to train your Agent</p>
+                                    </div>
+                                </div>
+                                <div class="chevron">→</div>
+                            </div>
+                        </div>
+
+                        <div class="knowledge-card" data-type="link">
+                            <div class="knowledge-card-content">
+                                <div class="knowledge-card-left">
+                                    <div class="knowledge-card-icon" style="background: #f59e0b;">🔗</div>
+                                    <div class="knowledge-card-text">
+                                        <h3>LINK</h3>
+                                        <p>Add website URLs train your Agent with dynamic information</p>
+                                    </div>
+                                </div>
+                                <div class="chevron">→</div>
+                            </div>
+                        </div>
+
+                        <div class="knowledge-card" data-type="file">
+                            <div class="knowledge-card-content">
+                                <div class="knowledge-card-left">
+                                    <div class="knowledge-card-icon" style="background: #3b82f6;">📁</div>
+                                    <div class="knowledge-card-text">
+                                        <h3>FILE</h3>
+                                        <p>Upload files to train your Agent</p>
+                                    </div>
+                                </div>
+                                <div class="chevron">→</div>
+                            </div>
+                        </div>
+
+                        <div class="knowledge-card" data-type="qa">
+                            <div class="knowledge-card-content">
+                                <div class="knowledge-card-left">
+                                    <div class="knowledge-card-icon" style="background: #8b5cf6;">❓</div>
+                                    <div class="knowledge-card-text">
+                                        <h3>QUESTIONS & ANSWER</h3>
+                                        <p>Provide a question-and-answer pairing your agent can use in conversations</p>
+                                    </div>
+                                </div>
+                                <div class="chevron">→</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Knowledge Form -->
+                <div id="knowledge-form" class="hidden">
+                    <div class="content-header">
+                        <button class="back-btn">←</button>
+                        <div class="content-icon" style="background: #10b981;">➕</div>
+                        <div>
+                            <h2 class="content-title">KNOWLEDGE</h2>
+                            <p class="content-subtitle">Add text-based information to train your Agent</p>
+                        </div>
+                    </div>
+
+                    <div class="form-card">
+                        <div class="form-group">
+                            <label class="form-label">Information for Your Agent</label>
+                            <p class="form-description">Enter accurate info your AI can use as answers</p>
+                            <textarea class="form-textarea large" id="knowledge-text" placeholder="Company overview, product features, customer FAQs, service guidelines..."></textarea>
+                            <div class="char-count"><span id="knowledge-count">0</span>/10000</div>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Link Form -->
+                <div id="link-form" class="hidden">
+                    <div class="content-header">
+                        <button class="back-btn">←</button>
+                        <div class="content-icon" style="background: #f59e0b;">🔗</div>
+                        <div>
+                            <h2 class="content-title">LINK</h2>
+                            <p class="content-subtitle">Add website URLs train your Agent with dynamic information</p>
+                        </div>
+                    </div>
+
+                    <div class="form-card">
+                        <div class="form-group">
+                            <label class="form-label">Enter a URL</label>
+                            <p class="form-description">Provide a URL for your agent to analyze</p>
+                            <div class="url-input-group">
+                                <span class="url-prefix">https://</span>
+                                <input type="text" class="url-input" id="link-url" placeholder="example.com">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="toggle-section">
+                                <div>
+                                    <label class="form-label">Enable Periodic Recrawling</label>
+                                    <p class="form-description">The agent will automatically recrawl the link at the selected frequency</p>
+                                </div>
+                                <div class="toggle-switch">
+                                    <div class="toggle-switch-slider"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="radio-group">
+                                <label class="radio-item">
+                                    <input type="radio" name="frequency" value="daily">
+                                    Daily
+                                </label>
+                                <label class="radio-item">
+                                    <input type="radio" name="frequency" value="weekly">
+                                    Weekly
+                                </label>
+                                <label class="radio-item">
+                                    <input type="radio" name="frequency" value="monthly" checked>
+                                    Monthly
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="btn btn-blue">Crawl</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- File Form -->
+                <div id="file-form" class="hidden">
+                    <div class="content-header">
+                        <button class="back-btn">←</button>
+                        <div class="content-icon" style="background: #3b82f6;">📁</div>
+                        <div>
+                            <h2 class="content-title">FILE</h2>
+                            <p class="content-subtitle">Upload files to train your Agent</p>
+                        </div>
+                    </div>
+
+                    <div class="form-card">
+                        <div class="form-group">
+                            <label class="form-label">Upload Files</label>
+                            <p class="form-description">Train your agent with uploaded content</p>
+                            
+                            <div class="file-upload-area">
+                                <div class="file-upload-icon">📁</div>
+                                <h4 class="file-upload-title">Upload Files</h4>
+                                <p class="file-upload-text">
+                                    Drag and drop your files here or 
+                                    <a href="#" class="file-upload-link">upload files</a>
+                                </p>
+                                <input type="file" id="file-input" multiple style="display: none;">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">How should your agent use these files?</label>
+                            <textarea class="form-textarea" id="file-instructions" placeholder="Describe how your agent should use the files"></textarea>
+                            <div class="char-count"><span id="file-count">0</span>/300</div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q&A Form -->
+                <div id="qa-form" class="hidden">
+                    <div class="content-header">
+                        <button class="back-btn">←</button>
+                        <div class="content-icon" style="background: #8b5cf6;">❓</div>
+                        <div>
+                            <h2 class="content-title">QUESTIONS & ANSWER</h2>
+                            <p class="content-subtitle">Provide a question-and-answer pairing your agent can use in conversations</p>
+                        </div>
+                    </div>
+
+                    <div class="form-card">
+                        <div class="form-group">
+                            <label class="form-label">Question</label>
+                            <p class="form-description">Train the AI based on your questions & answers</p>
+                            <input type="text" class="form-input" id="question" placeholder="Enter a brief, clear question that you'd like the Agent to answer.">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Answer Type</label>
+                            <select class="form-select" id="answer-type">
+                                <option value="text">📝 Text</option>
+                                <option value="list">📋 Show List of Items</option>
+                                <option value="video">🎬 Show Video</option>
+                                <option value="images">🖼️ Show Images</option>
+                                <option value="checklist">✅ Show Checklist</option>
+                                <option value="pdf">📄 Display a PDF</option>
+                                <option value="location">📍 Show Location</option>
+                            </select>
+                        </div>
+
+                        <!-- Dynamic Answer Content -->
+                        <div id="answer-content">
+                            <!-- Text Answer (Default) -->
+                            <div id="text-answer" class="answer-type-content">
+                                <textarea class="form-textarea" id="answer-text" placeholder="Provide a detailed and informative answer that will help the Agent respond accurately to the question."></textarea>
+                            </div>
+
+                            <!-- List Answer -->
+                            <div id="list-answer" class="answer-type-content hidden">
+                                <div class="form-group">
+                                    <label class="form-label">Add Your List</label>
+                                    <div id="list-items">
+                                        <div class="list-item">
+                                            <input type="text" class="form-input" placeholder="List item">
+                                            <button type="button" class="remove-item-btn">×</button>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="add-btn" id="add-list-item">+ Add new list item</button>
+                                </div>
+                            </div>
+
+                            <!-- Video Answer -->
+                            <div id="video-answer" class="answer-type-content hidden">
+                                <div class="form-group">
+                                    <label class="form-label">Select a Platform *</label>
+                                    <select class="form-select" id="video-platform">
+                                        <option value="">Please select</option>
+                                        <option value="youtube">YouTube</option>
+                                        <option value="vimeo">Vimeo</option>
+                                        <option value="loom">Loom</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Video URL</label>
+                                    <input type="text" class="form-input" id="video-url" placeholder="Enter video URL">
+                                </div>
+                            </div>
+
+                            <!-- Images Answer -->
+                            <div id="images-answer" class="answer-type-content hidden">
+                                <div class="form-group">
+                                    <label class="form-label">Upload Your Images *</label>
+                                    <div class="file-upload-area">
+                                        <div class="file-upload-icon">🖼️</div>
+                                        <h4 class="file-upload-title">Upload Images</h4>
+                                        <p class="file-upload-text">
+                                            <a href="#" class="file-upload-link">Click to upload</a> or drag & drop here
+                                        </p>
+                                        <input type="file" id="images-input" multiple accept="image/*" style="display: none;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Other answer types would go here -->
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placeholder sections for other sidebar items -->
+            <div id="actions-section" class="content-section hidden">
+                <div class="content-header">
+                    <div class="content-icon" style="background: #f59e0b;">⚡</div>
+                    <div>
+                        <h2 class="content-title">ACTIONS</h2>
+                        <p class="content-subtitle">Set conditions for replies and tasks</p>
+                    </div>
+                </div>
+                <div class="placeholder-content">
+                    <p>Actions configuration coming soon...</p>
+                </div>
+            </div>
+
+            <div id="tools-section" class="content-section hidden">
+                <div class="content-header">
+                    <div class="content-icon" style="background: #6b7280;">🔧</div>
+                    <div>
+                        <h2 class="content-title">TOOLS</h2>
+                        <p class="content-subtitle">Extend your Agent's capabilities</p>
+                    </div>
+                </div>
+                <div class="placeholder-content">
+                    <p>Tools configuration coming soon...</p>
+                </div>
+            </div>
+
+            <div id="forms-section" class="content-section hidden">
+                <div class="content-header">
+                    <div class="content-icon" style="background: #6366f1;">📄</div>
+                    <div>
+                        <h2 class="content-title">FORMS</h2>
+                        <p class="content-subtitle">Integrate form to collect data</p>
+                    </div>
+                </div>
+                <div class="placeholder-content">
+                    <p>Forms integration coming soon...</p>
+                </div>
+            </div>
+
+            <div id="teach-section" class="content-section hidden">
+                <div class="content-header">
+                    <div class="content-icon" style="background: #10b981;">🎓</div>
+                    <div>
+                        <h2 class="content-title">TEACH YOUR AGENT</h2>
+                        <p class="content-subtitle">Train your Agent with chat</p>
+                    </div>
+                </div>
+                <div class="placeholder-content">
+                    <p>Agent training interface coming soon...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback Button -->
+    <button class="feedback-btn">
+        💬 Give Feedback
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
