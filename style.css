@@ -1,0 +1,961 @@
+/*=============================================================
+    font-family: 'Red Hat Display', sans-serif;
+==============================================================*/
+:root {
+    /* Updated Color Palette for a more vibrant and engaging look */
+    --primary-color: #6a057d; /* A rich, deep purple */
+    --secondary-color: #4a4a4a; /* Darker grey for stronger contrast */
+    --accent-color: #ff8c00; /* Bright orange for highlights and interactivity */
+    --text-color: #333333; /* Even darker grey for general text for better readability */
+    --light-bg: #f0f2f5; /* A very light grey for a clean background */
+    --white-color: #ffffff;
+    --border-color: #d1d1d1; /* Softer border color */
+    --shadow-color: rgba(0, 0, 0, 0.15); /* Slightly more prominent shadow */
+    --success-color: #28a745; /* Green for success messages/buttons */
+    --danger-color: #dc3545; /* Red for errors */
+}
+
+body {
+    font-family: 'Red Hat Display', sans-serif;
+    line-height: 1.8; /* Increased line height for better readability */
+    color: var(--text-color);
+    background-color: var(--light-bg);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Reusable styles */
+.py-70 {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.pb-70 {
+    padding-bottom: 70px;
+}
+
+.pt-70 {
+    padding-top: 70px;
+}
+
+.pb-40 {
+    padding-bottom: 40px;
+}
+
+.py-40 {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.mb-3 {
+    margin-bottom: 15px;
+}
+
+.mb-4 {
+    margin-bottom: 20px;
+}
+
+.d-block {
+    display: block;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.float-none {
+    float: none;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ps-3 {
+    padding-left: 1rem !important; /* Overriding default Bootstrap list padding */
+}
+
+/* Header */
+header {
+    background-color: var(--white-color);
+    padding: 15px 0;
+    box-shadow: 0 4px 8px var(--shadow-color); /* Enhanced shadow */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo img {
+    max-height: 60px; /* Slightly larger logo */
+}
+
+.header-menu ul li {
+    margin-left: 35px; /* Increased spacing */
+}
+
+.header-menu ul li a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 600; /* Bolder font weight */
+    transition: color 0.4s ease-in-out, transform 0.2s ease-in-out; /* Smooth transition */
+}
+
+.header-menu ul li a:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px); /* Subtle lift effect */
+}
+
+.site-btn {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color)); /* Gradient background */
+    color: var(--white-color) !important;
+    padding: 12px 30px; /* Increased padding */
+    border-radius: 8px; /* More rounded corners */
+    text-decoration: none;
+    transition: all 0.3s ease-in-out; /* Smooth transition for all properties */
+    border: none;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Added shadow */
+}
+
+.site-btn:hover {
+    transform: translateY(-3px); /* Lift effect on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+    opacity: 0.9; /* Slight opacity change */
+}
+
+.site-btn.bg-success {
+    background: var(--success-color); /* Solid green for success button */
+    background: linear-gradient(45deg, var(--success-color), darken(var(--success-color), 10%)); /* Gradient for success */
+}
+
+.site-btn.bg-success:hover {
+    background: darken(var(--success-color), 10%);
+}
+
+
+/* Mobile Navigation */
+.mobile-toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none; /* Hidden by default, shown in responsive CSS */
+    z-index: 1001; /* Ensure it's above the mobile nav */
+    position: relative; /* Allows z-index to work */
+}
+
+.mobile-nav-element {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--primary-color); /* Changed to primary color */
+    overflow-x: hidden;
+    transition: width 0.5s ease-in-out; /* Smooth width transition */
+    z-index: 1000;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3); /* Shadow for slide-in effect */
+}
+
+.mobile-nav-element .menu {
+    padding: 80px 30px; /* Increased padding */
+}
+
+.mobile-nav-element .menu ul {
+    flex-direction: column;
+    align-items: flex-start !important;
+}
+
+.mobile-nav-element .menu ul li {
+    margin: 20px 0; /* More vertical spacing */
+}
+
+.mobile-nav-element .menu ul li a {
+    color: var(--white-color);
+    font-size: 22px; /* Larger font size */
+    font-weight: 700;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.mobile-nav-element .menu ul li a:hover {
+    color: var(--accent-color); /* Highlight color on hover */
+    transform: translateX(5px); /* Slide effect */
+}
+
+.mobile-nav-element .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 36px;
+    color: var(--white-color);
+}
+
+/* Internship Form Section */
+.internship-form-section {
+    background-color: var(--light-bg);
+    padding: 50px 0; /* Adjusted padding */
+}
+
+.heading-main {
+    font-size: 44px; /* Larger main heading */
+    font-weight: 800;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.heading-main::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px; /* Underline effect */
+    height: 5px;
+    background-color: var(--accent-color);
+    border-radius: 5px;
+}
+
+
+/* Multi-step form */
+#msform {
+    background: var(--white-color);
+    border-radius: 15px; /* More rounded container */
+    box-shadow: 0 10px 30px var(--shadow-color); /* Enhanced shadow */
+    padding: 40px; /* Increased padding */
+    position: relative;
+    transition: transform 0.3s ease-in-out; /* Smooth transition for form container */
+}
+
+#msform:hover {
+    transform: translateY(-5px); /* Subtle lift on hover */
+}
+
+/* Progressbar */
+#progressbar {
+    margin-bottom: 50px; /* More space below progress bar */
+    overflow: hidden;
+    color: lightgrey;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+
+#progressbar li {
+    list-style-type: none;
+    text-transform: uppercase;
+    font-size: 14px; /* Slightly smaller font for steps */
+    width: 16.66%; /* Distribute equally */
+    float: left;
+    position: relative;
+    font-weight: 600;
+    color: var(--secondary-color);
+    text-align: center;
+    transition: color 0.3s ease-in-out;
+}
+
+#progressbar li.active {
+    color: var(--primary-color); /* Active step color */
+}
+
+#progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 50px; /* Larger step indicator */
+    height: 50px;
+    line-height: 50px;
+    display: block;
+    font-size: 22px; /* Larger number in indicator */
+    color: var(--white-color);
+    background: var(--border-color); /* Default background */
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background 0.4s ease-in-out, transform 0.2s ease;
+}
+
+/* Active and complete steps */
+#progressbar li.active:before,
+#progressbar li.active + li:after {
+    background: var(--primary-color); /* Primary color for active and connecting line */
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color)); /* Gradient for active state */
+    transform: scale(1.05); /* Slight scale on active */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 6px; /* Thicker connecting line */
+    background: var(--border-color);
+    position: absolute;
+    left: -50%;
+    top: 22px; /* Align with new circle size */
+    z-index: -1;
+    transition: background 0.4s ease-in-out;
+}
+
+#progressbar li:first-child:after {
+    content: none;
+}
+
+/* Form Card */
+.form-card {
+    background: var(--white-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px; /* Slightly more rounded */
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
+    margin-bottom: 30px;
+}
+
+.fs-title {
+    font-size: 32px; /* Larger section title */
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    font-weight: 700;
+    text-align: left;
+}
+
+/* Input Fields */
+.input-field {
+    margin-bottom: 25px; /* Increased margin */
+}
+
+.input-field label.fieldlabels {
+    font-weight: 600; /* Bolder label */
+    color: var(--text-color);
+    margin-bottom: 8px;
+    display: block;
+    font-size: 16px;
+}
+
+.input-field label.fieldlabels span {
+    color: var(--danger-color); /* Red for required indicator */
+}
+
+.input-field input[type="text"],
+.input-field input[type="email"],
+.input-field input[type="tel"],
+.input-field input[type="date"],
+.input-field select,
+.input-field textarea {
+    width: 100%;
+    padding: 12px 18px; /* Increased padding */
+    border: 1px solid var(--border-color);
+    border-radius: 8px; /* More rounded input fields */
+    font-size: 16px;
+    color: var(--text-color);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    background-color: var(--light-bg); /* Slight background for inputs */
+}
+
+.input-field input:focus,
+.input-field select:focus,
+.input-field textarea:focus {
+    border-color: var(--accent-color); /* Accent color on focus */
+    box-shadow: 0 0 0 4px rgba(255, 140, 0, 0.2); /* Glow effect */
+    outline: none;
+    background-color: var(--white-color);
+}
+
+.input-field textarea {
+    min-height: 120px; /* Larger textarea */
+    resize: vertical;
+}
+
+/* Removed styles for .phone-field to allow normal text input behavior */
+.phone-field {
+    position: relative;
+}
+
+.phone-field input {
+    padding-inline-start: 85px !important;
+}
+
+.country-code span {
+    font-weight: 500;
+    font-size: 16px;
+    color: #515151;
+    display: inline-block;
+    margin: 0;
+}
+
+.phone-field .country-code {
+    padding: 14px 8px;
+    background: #D9D9D9;
+    border-radius: 8px 0px 0px 8px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+/* Radio and Checkbox fields */
+.radio-field, .checkbox-field {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+.radio-field input[type="radio"],
+.checkbox-field input[type="checkbox"] {
+    margin-right: 10px;
+    width: auto; /* Override default width */
+    transform: scale(1.2); /* Slightly larger checkboxes/radios */
+    transition: transform 0.2s ease;
+}
+
+.radio-field input[type="radio"]:checked,
+.checkbox-field input[type="checkbox"]:checked {
+    accent-color: var(--primary-color); /* Accent color for checked state */
+}
+
+.radio-field.justify-content-between {
+    justify-content: space-between;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+}
+
+.error-message {
+    color: var(--danger-color);
+    font-size: 13px;
+    margin-top: 5px;
+    display: none; /* Hidden by default */
+}
+
+
+/* Action Buttons */
+.action-button {
+    background: linear-gradient(45deg, var(--accent-color), var(--primary-color)); /* Gradient for action buttons */
+    color: var(--white-color);
+    padding: 14px 35px;
+    border-radius: 8px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    float: right; /* Default to right for next button */
+}
+
+.action-button:hover,
+.action-button:focus {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    opacity: 0.95;
+    outline: none;
+}
+
+.action-button-previous {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    padding: 14px 35px;
+    border-radius: 8px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    float: left; /* Default to left for previous button */
+}
+
+.action-button-previous:hover,
+.action-button-previous:focus {
+    background-color: darken(var(--secondary-color), 10%);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    outline: none;
+}
+
+/* Recaptcha Image */
+.input-field img[alt="Recaptcha"] {
+    max-width: 280px; /* Slightly larger recaptcha image */
+    height: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px; /* Rounded corners for recaptcha */
+    margin-top: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Certificate View Section (from certificate.html) */
+.certificate-view-section {
+    padding: 50px 0;
+    text-align: center;
+    background-color: var(--white-color);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    margin-top: 40px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.certificate-view-section:hover {
+    transform: translateY(-5px);
+}
+
+.certificate-view-section .site-btn {
+    margin-bottom: 30px;
+}
+
+.certificate-view-section iframe {
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    height: 600px; /* Default height */
+    width: 100%;
+}
+
+/* Thank You Section (from thank-you.html) */
+.thankyou-section {
+    background-color: var(--light-bg);
+    padding: 70px 0;
+    text-align: center;
+}
+
+.thankyou-section-inner {
+    background-color: var(--white-color);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap; /* Ensure responsiveness */
+}
+
+.thankyou-section-left {
+    padding: 20px;
+    text-align: left;
+}
+
+.thankyou-section-left .heading-main {
+    font-size: 38px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: left; /* Align heading to left within its container */
+}
+
+.thankyou-section-left .heading-main::after {
+    left: 0;
+    transform: translateX(0);
+}
+
+.thankyou-section-left .desc {
+    font-size: 18px;
+    color: var(--secondary-color);
+    line-height: 1.8;
+}
+
+.thankyou-section-right img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* FAQ Section (from faqs.html) */
+.faq-section {
+    padding: 70px 0;
+    background-color: var(--light-bg);
+}
+
+.faq-section-inner .accordion-item {
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    overflow: hidden; /* Ensures border-radius is applied correctly */
+}
+
+.faq-section-inner .accordion-button {
+    background-color: var(--white-color);
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 18px;
+    padding: 18px 25px;
+    border-radius: 10px;
+    text-align: left;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.faq-section-inner .accordion-button:not(.collapsed) {
+    color: var(--primary-color);
+    background-color: #f2f6fa; /* Lighter shade when open */
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: none;
+}
+
+.faq-section-inner .accordion-button:focus {
+    box-shadow: 0 0 0 3px rgba(106, 5, 125, 0.2); /* Primary color glow */
+    outline: none;
+}
+
+.faq-section-inner .accordion-body {
+    padding: 20px 25px;
+    background-color: #fcfdff; /* Even lighter background for body */
+    color: var(--secondary-color);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.cta-section {
+    margin-top: 50px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color)); /* Gradient background for CTA */
+    padding: 40px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: var(--white-color);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    overflow: hidden; /* For pseudo-elements or background patterns */
+    position: relative;
+}
+
+.cta-img-container {
+    margin-bottom: 25px;
+}
+
+.cta-img-container img {
+    max-width: 120px; /* Larger icon for CTA */
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3)); /* Shadow for the image */
+}
+
+.cta-content h4 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: var(--white-color);
+}
+
+.cta-content .desc {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.cta-content .desc a {
+    color: var(--white-color);
+    text-decoration: underline;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.cta-content .desc a:hover {
+    color: var(--secondary-color); /* Contrast on hover */
+}
+
+.cta-btn-grp {
+    display: flex;
+    gap: 20px; /* Space between buttons */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cta-btn-grp .site-btn {
+    background-color: var(--white-color); /* White background for CTA buttons */
+    color: var(--primary-color) !important; /* Primary text color */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.cta-btn-grp .site-btn:hover {
+    background-color: #f0f0f0; /* Slight change on hover */
+    color: var(--accent-color) !important;
+}
+
+.cta-btn-grp .site-btn.bg-success {
+    background-color: var(--white-color); /* Force white for whatsapp button */
+    color: var(--success-color) !important; /* Green text color */
+}
+
+.cta-btn-grp .site-btn.bg-success:hover {
+    background-color: #f0f0f0;
+    color: darken(var(--success-color), 10%) !important;
+}
+
+.cta-btn-grp .site-btn img {
+    height: 20px;
+    margin-right: 8px;
+    filter: invert(1); /* Invert color for white button */
+}
+
+.cta-btn-grp .site-btn.bg-success img {
+    filter: none; /* No invert for green text button */
+}
+
+
+/* Footer */
+footer {
+    background-color: var(--secondary-color); /* Darker footer */
+    color: var(--white-color);
+    padding: 30px 0;
+    text-align: center;
+    font-size: 15px;
+}
+
+footer p {
+    margin-bottom: 0;
+}
+
+footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--primary-color);
+}
+
+/* Responsive CSS (You'll want to add these to your existing responsive.css or incorporate here) */
+@media (max-width: 992px) {
+    .header-menu nav {
+        display: none;
+    }
+
+    .mobile-toggle-btn {
+        display: block;
+    }
+
+    .heading-main {
+        font-size: 36px; /* Smaller heading on tablet */
+    }
+
+    #msform {
+        padding: 30px;
+    }
+
+    #progressbar li {
+        font-size: 13px;
+        width: 33.33%; /* 3 columns on tablet */
+        margin-bottom: 20px;
+    }
+
+    #progressbar li:after {
+        display: none; /* Hide connecting line on small screens */
+    }
+
+    #progressbar {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-top: 40px !important; /* Adjust padding for wrapped progress bar */
+    }
+
+    #progressbar li:before {
+        top: -40px;
+        left: calc(50% - 25px); /* Center circles */
+    }
+
+    .radio-field.justify-content-between {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .thankyou-section-inner {
+        flex-direction: column;
+        padding: 30px;
+    }
+
+    .thankyou-section-left,
+    .thankyou-section-right {
+        text-align: center;
+    }
+
+    .thankyou-section-left .heading-main {
+        text-align: center;
+    }
+
+    .thankyou-section-left .heading-main::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .cta-section {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .heading-main {
+        font-size: 30px; /* Even smaller heading on mobile */
+    }
+
+    #msform {
+        padding: 20px;
+    }
+
+    .form-card {
+        padding: 20px;
+    }
+
+    .fs-title {
+        font-size: 26px;
+    }
+
+    .input-field input,
+    .input-field select,
+    .input-field textarea {
+        padding: 10px 15px;
+        font-size: 15px;
+    }
+
+    /* No specific phone-field adjustments needed as it's now a standard input */
+
+    .action-button,
+    .action-button-previous {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
+
+    .action-button.mx-auto {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .certificate-view-section iframe {
+        height: 400px; /* Adjust height for mobile */
+    }
+
+    .thankyou-section-left .heading-main {
+        font-size: 30px;
+    }
+
+    .cta-content h4 {
+        font-size: 26px;
+    }
+
+    .cta-btn-grp {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .heading-main {
+        font-size: 28px;
+        line-height: 1.3;
+    }
+
+    .site-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .logo img {
+        max-height: 45px;
+    }
+
+    .mobile-nav-element .menu ul li a {
+        font-size: 18px;
+    }
+
+    #progressbar li {
+        font-size: 11px; /* Even smaller font on very small screens */
+        width: 50%; /* 2 columns on very small screens */
+    }
+
+    #progressbar li:before {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 18px;
+        top: -30px; /* Adjust for smaller circles */
+        left: calc(50% - 20px);
+    }
+     #progressbar {
+        padding-top: 60px !important; /* Adjusted padding for very small screens */
+    }
+
+    .thankyou-section-inner {
+        padding: 20px;
+    }
+
+    .thankyou-section-left .heading-main {
+        font-size: 28px;
+    }
+
+    .thankyou-section-left .desc {
+        font-size: 16px;
+    }
+
+    .cta-section {
+        padding: 20px;
+    }
+
+    .cta-content h4 {
+        font-size: 22px;
+    }
+
+    .cta-content .desc {
+        font-size: 16px;
+    }
+}
+
+#progressbar {
+    display: flex;
+    justify-content: space-between;
+    counter-reset: step;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+#progressbar li {
+    position: relative;
+    text-align: center;
+    flex: 1;
+    font-size: 12px;
+    color: #666;
+}
+
+#progressbar li .step-number {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    background: #ccc;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#progressbar li.active .step-number {
+    background: linear-gradient(to right, #d22a6f, #f8a31b); /* Gradient for active */
+}
+
+#progressbar li:before {
+    content: none; /* Disable default counter if used */
+}
+
+#progressbar li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: -50%;
+    width: 100%;
+    height: 3px;
+    background-color: #ccc;
+    z-index: -1;
+}
+
+#progressbar li.active ~ li .step-number {
+    background-color: #ccc;
+}
